@@ -16,6 +16,6 @@ In the screenshot above, we are looking for `*.php` files in the current directo
 php find-multiple.php /path/to/dir "*.php" "/regex1/" "/regex2/" ... "/regexN/"
 ```
 
-It is recommended to enclose a regular expressions in quotation marks to avoid problems with the interpretation of quotation marks, asterisks (`*`), vertical dashes (`|`), `<`, `>`, `&`, etc. In this case, quotes inside a regular expression must be additionally escaped with a backslash `\`. To check the correctness of parameter passing, the decoded parameters are output at the beginning of the script.
+Regular expressions are passed in a form suitable for passing to the `preg_match()` function. It is recommended to enclose them in quotes to avoid problems with the interpretation of quotation marks, asterisks (`*`), vertical dashes (`|`), `<`, `>`, `&`, etc. In this case, quotes inside a regular expression must be additionally escaped with a backslash `\`. To check the correctness of parameter passing, decoded parameters are output at the beginning of the script.
 
 **Linux users' attention:** When passing the file mask (2nd parameter), don't forget to enclose it in quotes too, because otherwise bash will implicitly replace this parameter with files that correspond to this mask in the current directory. As a result, the order of parameters will be broken and some file names will be interpreted by the script as incorrect regular expressions.
