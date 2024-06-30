@@ -10,7 +10,7 @@ Sometimes you need to find a certain place in a large project, but you don't kno
 
 In the screenshot above, we are looking for `*.php` files in the current directory that contain lines corresponding to 2 regular expressions: `/'_'|"_"/` and `/time\(\)/`.
 
-## Использование
+## Usage
 
 ```shell
 php find-multiple.php /path/to/dir "*.php" "/regex1/" "/regex2/" ... "/regexN/"
@@ -19,3 +19,7 @@ php find-multiple.php /path/to/dir "*.php" "/regex1/" "/regex2/" ... "/regexN/"
 Regular expressions are passed in a form suitable for passing to the `preg_match()` function. It is recommended to enclose them in quotes to avoid problems with the interpretation of quotation marks, asterisks (`*`), vertical dashes (`|`), `<`, `>`, `&`, etc. In this case, quotes inside a regular expression must be additionally escaped with a backslash `\`. To check the correctness of parameter passing, decoded parameters are output at the beginning of the script.
 
 **Linux users' attention:** When passing the file mask (2nd parameter), don't forget to enclose it in quotes too, because otherwise bash will implicitly replace this parameter with files that correspond to this mask in the current directory. As a result, the order of parameters will be broken and some file names will be interpreted by the script as incorrect regular expressions.
+
+## Set as system command
+
+Add the directory with this utility to the PATH environment variable, and then you will be able to call this utility from any directory without having to specify the script path and the php interpreter. On Windows you don't need to do anything else, the `find-multiple` command will automatically call `find-multiple.cmd` which will call the php script from the same directory as the CMD file. On Linux, you will have to add execution rights (`chmod +x find-multiple.php`) and you can also create a symbolic link to the script without the .php extension (`ln -s find-multiple.php find-multiple`).
